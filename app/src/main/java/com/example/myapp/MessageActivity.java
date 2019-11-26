@@ -60,6 +60,12 @@ public class MessageActivity extends AppCompatActivity {
         setToolbar();
         init();
 
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
 
         intent = getIntent();
         final String userid = intent.getStringExtra("userid");
@@ -93,6 +99,7 @@ public class MessageActivity extends AppCompatActivity {
                 }else {
                     Glide.with(MessageActivity.this).load(user.getImageURL()).into(profile_image);
                 }
+                readMessages(fuser.getUid(), userid, user.getImageURL());
 
             }
 
@@ -123,7 +130,7 @@ public class MessageActivity extends AppCompatActivity {
         username = findViewById(R.id.txt_username);
         text_send = findViewById(R.id.text_send);
         btn_send = findViewById(R.id.btn_send);
-        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view_message);
     }
 
 
@@ -138,6 +145,32 @@ public class MessageActivity extends AppCompatActivity {
 
         reference.child("Chats").push().setValue(hashMap);
 
+    }
+
+    public void readMessages(final String myid, final String userid, final String imageurl){
+        mchat = new ArrayList<>();
+
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mchat.clear();
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if(chat.getReceiver().equals(myid) && chat.getSender().equals(userid)
+                            || chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
+                        mchat.add(chat);
+                    }
+                    messageAdapter = new MessageAdapter(MessageActivity.this, mchat, imageurl);
+                    recyclerView.setAdapter(messageAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
