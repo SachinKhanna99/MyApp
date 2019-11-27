@@ -1,5 +1,6 @@
 package com.example.myapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
@@ -58,6 +60,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         }else {
             Glide.with(mContext).load(imageurl).into(holder.profile_image);
+        }
+
+        if(position == mChat.size()-1){
+            if(chat.isIsseen()){
+                holder.txt_seen.setText("Seen");
+            }else {
+                holder.txt_seen.setText("Sent");
+            }
+        }else {
+            holder.txt_seen.setVisibility(View.GONE);
         }
     }
 
@@ -70,12 +82,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         private TextView show_message;
         private ImageView profile_image;
+        private TextView txt_seen;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             show_message = itemView.findViewById(R.id.show_message);
             profile_image = itemView.findViewById(R.id.profile_image);
+            txt_seen = itemView.findViewById(R.id.txt_seen);
         }
     }
 
