@@ -22,4 +22,31 @@
         android:layout_marginStart="10dp"
         android:layout_centerVertical="true"/>
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_on"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        app:civ_border_width="5dp"
+        app:civ_border_color="#05df29"
+        android:layout_below="@+id/txt_username"
+        android:layout_marginStart="-12dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_off"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        app:civ_border_width="5dp"
+        app:civ_border_color="#bfbfbf"
+        android:layout_below="@+id/txt_username"
+        android:layout_marginStart="-12dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/profile_image"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone"/>
+
+
 </RelativeLayout>

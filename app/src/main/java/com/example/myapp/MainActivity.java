@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             if(user.getImageURL().equals("default")){
                 profile_image.setImageResource(R.mipmap.ic_launcher);
             }else {
-                Glide.with(MainActivity.this).load(user.getImageURL()).into(profile_image);
+                Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
             }
         }
 
@@ -115,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, StartActivity.class));
-                finish();
+                startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
         }
         return false;
@@ -155,6 +155,26 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
+
+    private void status(String status){
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    protected void onResume(){
+        super.onResume();
+        status("online");
+    }
+
+    protected void onPause(){
+        super.onPause();
+        status("offline");
+    }
+
 
 
 }
