@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +31,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        profile_image = findViewById(R.id.profile_image);
+        profile_image = findViewById(R.id.profile_image_listItem);
         username = findViewById(R.id.txt_username);
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);

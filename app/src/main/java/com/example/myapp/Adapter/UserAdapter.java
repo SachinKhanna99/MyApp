@@ -104,7 +104,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
 
             username = itemView.findViewById(R.id.txt_username);
-            profile_image = itemView.findViewById(R.id.profile_image);
+            profile_image = itemView.findViewById(R.id.profile_image_listItem);
             image_on =  itemView.findViewById(R.id.image_on);
             image_off= itemView.findViewById(R.id.image_off);
             last_msg= itemView.findViewById(R.id.txt_last_message);

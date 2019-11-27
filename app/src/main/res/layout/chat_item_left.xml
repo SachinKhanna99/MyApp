@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profile_image_listItem"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@mipmap/ic_launcher"/>
@@ -14,7 +14,7 @@
         android:id="@+id/show_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image_listItem"
         android:text="@string/hello"
         android:textSize="18sp"
         android:textColor="#000000"

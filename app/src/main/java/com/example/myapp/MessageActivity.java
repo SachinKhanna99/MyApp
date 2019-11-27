@@ -8,12 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.media.MediaBrowserCompat;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -132,7 +129,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void init(){
-        profile_image = findViewById(R.id.profile_image);
+        profile_image = findViewById(R.id.profile_image_listItem);
         username = findViewById(R.id.txt_username);
         text_send = findViewById(R.id.text_send);
         btn_send = findViewById(R.id.btn_send);

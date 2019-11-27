@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profile_image_listItem"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@mipmap/ic_launcher"/>
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image_listItem"
         android:text="@string/username"
         android:textColor="@color/black"
         android:textSize="18sp" />
@@ -30,7 +30,7 @@
         android:layout_below="@+id/txt_username"
         android:layout_marginStart="-12dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image_listItem"
         android:src="@mipmap/ic_launcher"
         android:visibility="gone"/>
 
@@ -43,7 +43,7 @@
         android:layout_below="@+id/txt_username"
         android:layout_marginStart="-12dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image_listItem"
         android:src="@mipmap/ic_launcher"
         android:visibility="gone"/>
 
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@id/profile_image"
+        android:layout_toEndOf="@id/profile_image_listItem"
         android:layout_below="@id/txt_username"
         android:layout_marginTop="3dp"
         android:textSize="13dp"
