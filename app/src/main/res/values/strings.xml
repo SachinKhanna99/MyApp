@@ -20,4 +20,5 @@
     <string name="type_a_message">Type a message...</string>
     <string name="hello">hello</string>
     <string name="profile">Profile</string>
+    <string name="no_msg">No message!</string>
 </resources>
