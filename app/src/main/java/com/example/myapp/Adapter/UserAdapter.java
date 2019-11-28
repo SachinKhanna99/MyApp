@@ -115,36 +115,35 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         theLast_msg = "default";
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Chat chat = snapshot.getValue(Chat.class);
-                    if(chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)
-                        || chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid())){
-                        theLast_msg  = chat.getMessage();
+        if(firebaseUser != null) {
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Chat chat = snapshot.getValue(Chat.class);
+                        assert chat != null;
+                        assert firebaseUser != null;
+                        if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)
+                                || chat.getReceiver().equals(userid) && chat.getSender().equals(firebaseUser.getUid())) {
+                            theLast_msg = chat.getMessage();
+                        }
                     }
-                }
-                switch (theLast_msg){
-                    case "default":
+                    if ("default".equals(theLast_msg)) {
                         last_msg.setText(R.string.no_msg);
-                        break;
-
-                    default:
+                    } else {
                         last_msg.setText(theLast_msg);
-                        break;
+                    }
+
+                    theLast_msg = "default";
                 }
 
-                theLast_msg = "default";
-            }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
+        }
     }
 
 }

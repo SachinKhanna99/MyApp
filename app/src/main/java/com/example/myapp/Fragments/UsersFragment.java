@@ -1,7 +1,5 @@
 package com.example.myapp.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapp.Adapter.UserAdapter;
-import com.example.myapp.Adapter.UserListAdapter;
 import com.example.myapp.Model.User;
 import com.example.myapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +29,7 @@ import java.util.List;
 public class UsersFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private UserListAdapter userAdapter;
+    private UserAdapter userAdapter;
     private List<User> mUsers;
 
     @Override
@@ -67,7 +64,7 @@ public class UsersFragment extends Fragment {
                     }
                 }
 
-                userAdapter = new UserListAdapter(getContext(), mUsers, false);
+                userAdapter = new UserAdapter(getContext(), mUsers, false);
                 recyclerView.setAdapter(userAdapter);
             }
 

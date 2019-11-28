@@ -94,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("status", "offline");
 
 
+
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -107,6 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(RegisterActivity.this, "You can't register with this email and password. Try another!", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
     }
