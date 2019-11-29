@@ -21,13 +21,26 @@
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_toEndOf="@id/profile_image_listItem"
             android:background="@drawable/bubble_message_right"
             android:padding="8dp"
             android:text="@string/hello"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:layout_alignParentEnd="true"/>
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imaView_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/txt_seen"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="-19dp"
+            android:maxHeight="400dp"
+            android:src="@drawable/ic_image_send" />
 
         <TextView
             android:id="@+id/txt_seen"
